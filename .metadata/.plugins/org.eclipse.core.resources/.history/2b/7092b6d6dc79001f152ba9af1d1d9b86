@@ -1,0 +1,78 @@
+package lab1;
+
+import java.util.Vector;
+
+public class Garage {
+	private static String owner;
+    private static int vehicleCount;
+
+    // Max size of our garage is only final and static
+    private static final int MAX_CAPACITY = 100;
+    
+    private Vector <Vehicle> carList = new Vector<>();
+    
+    {
+    	owner = "Unknown";
+    	vehicleCount = 0;
+    }
+    
+    public Garage() {
+    	
+    }
+    
+    public Garage(String owner) {
+    	this.owner = owner;
+    }
+    
+    public Garage(Vehicle v) {
+    	carList.add(v);
+    }
+    
+    public Garage(Vector <Vehicle> carList) {
+    	this.carList = carList;
+    }
+    
+    public Garage(String owner, Vector <Vehicle> carList) {
+    	this(owner);
+    	this.carList = carList;
+    }
+    
+    public void removeVehicle(Vehicle v) {
+    	int i = 0;
+    	for(Vehicle vehicle : carList) {
+    		if(vehicle == v) carList.remove(i);
+    		i++;
+    	}
+    }
+    
+    public int getMaxCapacity() {
+    	return this.MAX_CAPACITY;
+    }
+    
+    public void setOwner(String owner) {
+    	this.owner = owner;
+    }
+    
+    public String getOwner() {
+    	return this.owner;
+    }
+    
+	
+    public String toString() {
+    	return "Owner of the garage: " + owner + " and all vehicle in the garage is: \n" + carList.toString();
+    }
+	
+	
+//    public static void main(String[] args) {
+//        Vehicle car1 = new Vehicle("1HGCM82633A123456", "Honda", "Accord", VehicleType.CAR);
+//        Vehicle truck1 = new Vehicle("1FTSW21P53EB12345", "Ford", "F-150", VehicleType.TRUCK);
+//
+//        // Print vehicle details
+//        car1.printDetails();
+//        truck1.printDetails(true);
+//
+//        // Accessing static methods
+//        System.out.println("Total vehicles created: " + Vehicle.getVehicleCount());
+//        System.out.println("Max capacity of garage: " + Vehicle.getMaxCapacity());
+//    }
+}

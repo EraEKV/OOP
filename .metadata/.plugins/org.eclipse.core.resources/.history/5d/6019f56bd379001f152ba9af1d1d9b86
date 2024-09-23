@@ -1,0 +1,57 @@
+package lab1;
+
+
+import java.util.Random;
+
+public class Player {
+    private String name;
+    private int hp;
+    private int attackPower;
+    private int defensePower;
+    private Random random = new Random();
+    
+    
+    public Player() {
+    	
+    }
+
+    public Player(String name, int hp, int attackPower, int defensePower) {
+        this.name = name;
+        this.hp = hp;
+        this.attackPower = attackPower;
+        this.defensePower = defensePower;
+    }
+
+
+    public int attack() {
+        int randomAttack = random.nextInt(attackPower);
+        System.out.println(name + " атакует с силой " + randomAttack);
+        return randomAttack;
+    }
+
+    public int defend() {
+        int randomDefense = random.nextInt(defensePower);
+        System.out.println(name + " защищается на " + randomDefense + " урона");
+        return randomDefense;
+    }
+
+
+    public void takeDamage(int damage) {
+        hp -= damage;
+        if (hp < 0) hp = 0;
+        System.out.println(name + " получает " + damage + " урона. Осталось HP: " + hp);
+    }
+
+
+    public boolean isAlive() {
+        return hp > 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+}

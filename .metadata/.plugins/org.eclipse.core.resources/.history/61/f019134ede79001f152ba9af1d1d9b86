@@ -1,0 +1,32 @@
+package lab1;
+
+import java.util.Vector;
+
+
+public class GarageTest {
+    public static void main(String[] args) {
+        Vehicle car1 = new Vehicle("1HGCM82633A123456", "Honda", "Accord", VehicleType.CAR);
+        Vehicle car2 = new Vehicle("1FMCU0G73DUB12345", "Ford", "Escape", VehicleType.SUV);
+        Vehicle bike1 = new Vehicle("JH2SC5908JK123456", "Honda", "CBR", VehicleType.MOTORCYCLE);
+
+        Garage garage = new Garage("Kokenov Erasyl");
+        garage.addVehicle(car1);
+        garage.addVehicle(car2);
+        garage.addVehicle(bike1);
+        
+        // Print garage details
+        System.out.println(garage);
+
+        // Remove a vehicle and print updated garage details
+        garage.removeVehicle(car2);
+        System.out.println("After removing a vehicle:\n" + garage);
+
+        // Demonstrate method overloading
+        car1.printDetails();
+        bike1.printDetails(true); // Prints with type
+        bike1.printDetails(false); // Prints without type
+        
+        // Show max capacity
+        System.out.println("Max capacity of the garage: " + garage.getMaxCapacity());
+    }
+}

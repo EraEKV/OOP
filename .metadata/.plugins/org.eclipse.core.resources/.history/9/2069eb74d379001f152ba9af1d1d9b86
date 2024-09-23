@@ -1,0 +1,66 @@
+package lab1;
+
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class BattleGame {
+    private Player player;
+    private Player enemy;
+    private Random random = new Random();
+    private Scanner scanner = new Scanner(System.in);
+
+    public BattleGame(Player player, Player enemy) {
+        this.player = player;
+        this.enemy = enemy;
+    }
+
+
+    public void startBattle() {
+        System.out.println("Битва началась!");
+
+        while (player.isAlive() && enemy.isAlive()) {
+            System.out.println("\nВаш ход! Выберите действие: 1 - Атака, 2 - Защита");
+            int choice = scanner.nextInt();
+
+            Action playerAction = (choice == 1) ? Action.ATTACK : Action.DEFEND;
+
+
+            Action enemyAction = random.nextBoolean() ? Action.ATTACK : Action.DEFEND;
+
+            resolveTurn(playerAction, enemyAction);
+
+
+            if (!player.isAlive()) {
+                System.out.println("\nИгрок проиграл!");
+            } else if (!enemy.isAlive()) {
+                System.out.println("\nИгрок победил!");
+            }
+        }
+    }
+
+
+    private void resolveTurn(Action playerAction, Action enemyAction) {
+        if (playerAction == Action.ATTACK && enemyAction == Action.ATTACK) {
+            System.out.println("\nОба атакуют!");
+            int playerDamage = player.attack();
+            int enemyDamage = enemy.attack();
+            player.takeDamage(enemyDamage);
+            enemy.takeDamage(playerDamage);
+        } else if (playerAction == Action.ATTACK && enemyAction == Action.DEFEND) {
+            System.out.println("\nИгрок атакует, враг защищается!");
+            int playerDamage = player.attack();
+            int enemyDefense = enemy.defend();
+            int damageToEnemy = Math.max(0, playerDamage - enemyDefense);
+            enemy.takeDamage(damageToEnemy);
+        } else if (playerAction == Action.DEFEND && enemyAction == Action.ATTACK) {
+            System.out.println("\nВраг атакует, игрок защищается!");
+            int enemyDamage = enemy.attack();
+            int playerDefense = player.defend();
+            int damageToPlayer = Math.max(0, enemyDamage - playerDefense);
+            player.takeDamage(damageToPlayer);
+        } else {
+            System.out.println("\nОба защищаются! Никто не получает урона.");
+        }
+    }
+}

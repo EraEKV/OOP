@@ -1,0 +1,90 @@
+package lab1;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class BattleGame {
+    private Player player;
+    private Player enemy;
+    private Random random = new Random();
+    private Scanner scanner = new Scanner(System.in);
+
+    public BattleGame(Player player, Player enemy) {
+        this.player = player;
+        this.enemy = enemy;
+    }
+
+    // Основной метод для запуска битвы
+    public void startBattle() {
+        System.out.println("Битва началась!");
+
+        // Пока оба игрока живы
+        while (player.isAlive() && enemy.isAlive()) {
+            showStats();
+
+            // Ход игрока: выбрать действие
+            Action playerAction = getPlayerAction();
+
+            // Ход врага (выбирает случайное действие)
+            Action enemyAction = random.nextBoolean() ? Action.ATTACK : Action.DEFEND;
+
+            // Обрабатываем ход
+            resolveTurn(playerAction, enemyAction);
+
+            // Проверка исхода
+            if (!player.isAlive()) {
+                System.out.println("\nВы проиграли!");
+                break;
+            } else if (!enemy.isAlive()) {
+                System.out.println("\nВы победили!");
+                break;
+            }
+        }
+    }
+
+    // Метод для выбора действия игроком
+    private Action getPlayerAction() {
+        System.out.println("\nВаш ход! Выберите действие: 1 - Атака, 2 - Защита");
+        int choice = scanner.nextInt();
+
+        while (choice != 1 && choice != 2) {
+            System.out.println("Некорректный выбор. Пожалуйста, выберите 1 (Атака) или 2 (Защита):");
+            choice = scanner.nextInt();
+        }
+
+        return (choice == 1) ? Action.ATTACK : Action.DEFEND;
+    }
+
+    // Обработка хода
+    private void resolveTurn(Action playerAction, Action enemyAction) {
+        if (playerAction == Action.ATTACK && enemyAction == Action.ATTACK) {
+            System.out.println("\nОба атакуют!");
+            int playerDamage = player.attack();
+            int enemyDamage = enemy.attack();
+            player.takeDamage(enemyDamage);
+            enemy.takeDamage(playerDamage);
+        } else if (playerAction == Action.ATTACK && enemyAction == Action.DEFEND) {
+            System.out.println("\nИгрок атакует, враг защищается!");
+            int playerDamage = player.attack();
+            int enemyDefense = enemy.defend();
+            int damageToEnemy = Math.max(0, playerDamage - enemyDefense);
+            enemy.takeDamage(damageToEnemy);
+        } else if (playerAction == Action.DEFEND && enemyAction == Action.ATTACK) {
+            System.out.println("\nВраг атакует, игрок защищается!");
+            int enemyDamage = enemy.attack();
+            int playerDefense = player.defend();
+            int damageToPlayer = Math.max(0, enemyDamage - playerDefense);
+            player.takeDamage(damageToPlayer);
+        } else {
+            System.out.println("\nОба защищаются! Урон не нанесен.");
+        }
+    }
+
+    // Показ текущих статов
+    private void showStats() {
+        System.out.println("\n--- Текущие статы ---");
+        player.showStats();
+        enemy.showStats();
+        System.out.println("----------------------");
+    }
+}

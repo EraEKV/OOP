@@ -1,0 +1,32 @@
+package lab1;
+
+import java.util.Vector;
+
+
+public class GarageTest {
+    public static void main(String[] args) {
+        Vehicle car1 = new Vehicle("1HGCM82633A123456", "Honda", "Accord", VehicleType.CAR);
+        Vehicle car2 = new Vehicle("1FMCU0G73DUB12345", "Ford", "Escape", VehicleType.SUV);
+        Vehicle bike1 = new Vehicle("JH2SC5908JK123456", "Honda", "CBR", VehicleType.MOTORCYCLE);
+
+        Garage garage = new Garage("Kokenov Erasyl");
+        garage.addVehicle(car1);
+        garage.addVehicle(car2);
+        garage.addVehicle(bike1);
+        
+
+        System.out.println(garage);
+
+
+        garage.removeVehicle(car2);
+        System.out.println("After removing a vehicle:\n" + garage);
+
+
+        car1.printDetails();
+        bike1.printDetails(true);
+        bike1.printDetails(false);
+        
+
+        System.out.println("Max capacity of the garage: " + garage.getMaxCapacity());
+    }
+}

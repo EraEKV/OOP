@@ -1,0 +1,19 @@
+package lab1;
+
+
+
+public class Garage {
+
+    public static void main(String[] args) {
+        Vehicle car1 = new Vehicle("1HGCM82633A123456", "Honda", "Accord", VehicleType.CAR);
+        Vehicle truck1 = new Vehicle("1FTSW21P53EB12345", "Ford", "F-150", VehicleType.TRUCK);
+
+        // Print vehicle details
+        car1.printDetails();
+        truck1.printDetails(true);
+
+        // Accessing static methods
+        System.out.println("Total vehicles created: " + Vehicle.getVehicleCount());
+        System.out.println("Max capacity of garage: " + Vehicle.getMaxCapacity());
+    }
+}

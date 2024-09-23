@@ -1,0 +1,13 @@
+package lab1;
+
+public class TestGame {
+    public static void main(String[] args) {
+        // Создание игроков
+        Player player = new Player("Игрок", 100, 20, 10);
+        Player enemy = new Player("Компьютер", 100, 15, 12);
+
+        // Запуск игры
+        BattleGame game = new BattleGame(player, enemy);
+        game.startBattle();
+    }
+}

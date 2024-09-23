@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+/Users/dulatulynurasyl/Documents/Eclipse/.metadata/.plugins/org.eclipse.jdt.core
+1492766893.index
+2208506105.index
+1865797976.index

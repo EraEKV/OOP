@@ -1,0 +1,51 @@
+package lab1;
+
+
+
+public class Vehicle {
+
+    private final String vin;
+
+
+    private String brand;
+    private String model;
+    private VehicleType vehicleType;
+
+
+    // Initialization block (runs when an object is created)
+    {
+        System.out.println("Vehicle is being created!");
+    }
+
+
+    public Vehicle(String vinNumber, String brand, String model, VehicleType vehicleType) {
+        this.vin = vinNumber;
+        this.brand = brand;
+        this.model = model;
+        this.vehicleType = vehicleType;
+    }
+
+    // Method overloading: Same method name but different parameters
+    public void printDetails() {
+        System.out.println("VIN: " + this.vin + ", Make: " + brand + ", Model: " + model);  // 'this' to refer to vinNumber
+    }
+
+    public void printDetails(boolean withType) {
+        if (withType) {
+            System.out.println("Type: " + vehicleType + ", VIN: " + vin + ", Make: " + brand + ", Model: " + model);
+        } else {
+            printDetails();
+        }
+    }
+
+    // Getter for read-only field (vinNumber)
+    public String getVinNumber() {
+        return vin;
+    }
+
+
+    public String toString() {
+    	return "A" + vehicleType + " with VIN number: " + vin + " " + brand + " " + model;
+    }
+}
+

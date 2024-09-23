@@ -1,0 +1,61 @@
+package lab1;
+
+
+
+public class Vehicle {
+
+
+    private static int vehicleCount = 0;
+
+    private final String vin;
+
+
+    private String make;
+    private String model;
+    private VehicleType vehicleType;
+
+    // Static final constant (Max capacity for vehicles in the garage)
+    private static final int MAX_CAPACITY = 100;
+
+    // Initialization block (runs when an object is created)
+    {
+        System.out.println("Vehicle is being created!");
+    }
+
+
+    public Vehicle(String vinNumber, String make, String model, VehicleType vehicleType) {
+        this.vin = vinNumber;
+        this.make = make;
+        this.model = model;
+        this.vehicleType = vehicleType;
+        vehicleCount++;
+    }
+
+    // Method overloading: Same method name but different parameters
+    public void printDetails() {
+        System.out.println("VIN: " + this.vin + ", Make: " + make + ", Model: " + model);  // 'this' to refer to vinNumber
+    }
+
+    public void printDetails(boolean withType) {
+        if (withType) {
+            System.out.println("Type: " + vehicleType + ", VIN: " + vin + ", Make: " + make + ", Model: " + model);
+        } else {
+            printDetails();
+        }
+    }
+
+    // Getter for read-only field (vinNumber)
+    public String getVinNumber() {
+        return vin;
+    }
+
+    // Static method to get the current vehicle count
+    public static int getVehicleCount() {
+        return vehicleCount;
+    }
+
+    public static int getMaxCapacity() {
+        return MAX_CAPACITY;
+    }
+}
+
