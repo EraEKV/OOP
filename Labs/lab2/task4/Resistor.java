@@ -16,7 +16,6 @@ public class Resistor extends Circuit {
 		return this.resistance;
 	}
 	
-
 	@Override
 	public double getPotentialDiff() {
 		return this.V;
@@ -26,6 +25,8 @@ public class Resistor extends Circuit {
 	public void applyPotentialDiff(double V) {
 		this.V = V;
 	}
+	
+	
 	
 	public String toString() {
 		return super.toString() + "Resistor[Resistance=" + this.resistance + 

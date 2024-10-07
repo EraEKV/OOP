@@ -11,14 +11,16 @@ public class Parallel extends Circuit {
 
     @Override
     public double getResistance() {
-        double rA = a.getResistance();
-        double rB = b.getResistance();
-        return (rA * rB) / (rA + rB); // Formula for resistors in parallel
+        double r1 = a.getResistance();
+        double r2 = b.getResistance();
+        return (r1 * r2) / (r1 + r2);
+//        r1r2 / (r1+r2) = Rtotal
+//        1/Rtotal = (r1+r2)/r1r2
     }
 
     @Override
     public double getPotentialDiff() {
-        return a.getPotentialDiff(); // Potential difference is the same
+        return a.getPotentialDiff();
     }
 
     @Override
