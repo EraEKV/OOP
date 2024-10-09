@@ -13,10 +13,10 @@ public class Queen extends Piece {
 	public boolean isLegalMove(Position b) {
 		if (!b.isValid()) return false;
 		
-		int deltaX = Math.abs(b.x.ordinal() - a.x.ordinal());
-        int deltaY = Math.abs(b.y - a.y);
+		int deltaX = this.deltaX(b);
+		int deltaY = this.deltaY(b);
         
-		return (deltaX == deltaY || deltaX == 0 || deltaY == 0);
+		return new Rook(this.a).isLegalMove(b) || new Bishop(this.a).isLegalMove(b);
 	}
 	
 	public String toString() {

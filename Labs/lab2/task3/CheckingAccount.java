@@ -2,7 +2,8 @@ package task3;
 
 public class CheckingAccount extends Account {
 	private int transactions = 0;
-	private static final double FREE_TRANSACTIONS = 2;
+	private static double FREE_TRANSACTIONS = 2;
+	private static double FEE = 0.02;
 	
 	public CheckingAccount() {
 		
@@ -15,7 +16,7 @@ public class CheckingAccount extends Account {
 	public void deductFee() {
 		try {
 			if(transactions > FREE_TRANSACTIONS) {
-				super.withdraw(0.02);
+				super.withdraw(FEE);
 			}
 		} catch(Exception e) {
 			System.err.println(e);
@@ -39,6 +40,30 @@ public class CheckingAccount extends Account {
 			((CheckingAccount) other).transaction();
 		}
 	}
+	
+	public int getTransactions() {
+		return this.transactions;
+	}
+	
+	public double getOverallFeeDeducted() {
+		return FEE * transactions;
+	}
+	
+	
+	public boolean equals(Object o) {
+		if(!super.equals(o)) return false;
+		CheckingAccount other = (CheckingAccount) o;
+		return this.transactions == other.getTransactions();
+	}
+	
+	
+	public int hashCode() {
+		int result = super.hashCode();
+		result = result * 31 + transactions;
+		
+		return result;
+	}
+	
 	
 	public String toString() {
 		return super.toString() + "\nCheckingAccount[" +

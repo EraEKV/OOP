@@ -23,12 +23,7 @@ public class Bank {
 	}
 	
 	public void closeAccount(int accNumber) {
-		for(Account ac : accounts) {
-			if(ac.getAccountNumber() == accNumber) {
-				accounts.remove(ac);
-				break;
-			}
-		}
+		accounts.remove(new Account(accNumber));
 	}
 	
 	public void update() {
@@ -36,7 +31,7 @@ public class Bank {
             if (account instanceof SavingsAccount) {
                 ((SavingsAccount) account).calculateInterest(1);
             } else if (account instanceof CheckingAccount) {
-                ((CheckingAccount) account).deductFee();
+                ((CheckingAccount) account).getOverallFeeDeducted();
             }
         }
 	}

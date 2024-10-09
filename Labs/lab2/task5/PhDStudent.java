@@ -44,17 +44,20 @@ public class PhDStudent extends Person {
 		int result = super.hashCode();
     	result = 31 * result + (proffeciency != null ? proffeciency.hashCode() : 0);
     	result = 31 * result + (direction != null ? direction.hashCode() : 0);
+    	result = result * 31 + this.canTakeCare;
 		return result;
 	}
     
     @Override
 	public boolean equals(Object o) {
-    	if(this == o) return true;
-    	if(!(o instanceof PhDStudent)) return false;
+    	super.equals(o);
     	
     	PhDStudent other = (PhDStudent) o;
 		
-		return super.equals(other) && this.proffeciency.equals(other.proffeciency) && this.direction.equals(other.direction);
+		return this.proffeciency.equals(other.proffeciency) && 
+				this.canTakeCare == other.getOccupation() && 
+				this.direction.equals(other.direction) && 
+				this.canTakeCare == other.getOccupation();
 	}
 	
 	

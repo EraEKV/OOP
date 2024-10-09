@@ -33,17 +33,17 @@ public class Employee extends Person {
 	public int hashCode() {
 		int result = super.hashCode();
     	result = 31  * result + (position != null ? position.hashCode() : 0);
+    	result = result * 31 + this.canTakeCare;
 		return result;
 	}
     
     @Override
 	public boolean equals(Object o) {
-    	if(this == o) return true;
-    	if(!(o instanceof Employee)) return false;
+    	super.equals(o);
     	
 		Employee other = (Employee) o;
 		
-		return super.equals(other) && this.position.equals(other.position);
+		return this.position.equals(other.position) && this.canTakeCare == other.getOccupation();
 	}
 	
 	

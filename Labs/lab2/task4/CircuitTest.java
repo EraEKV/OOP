@@ -14,6 +14,9 @@ public class CircuitTest {
 		Circuit circuit = new Parallel(h, f);
 		double R = circuit.getResistance();
 		System.out.println(R);
+		
+		circuit.applyPotentialDiff(5);
+		System.out.println(a.getPotentialDiff());
 	}
 
 }

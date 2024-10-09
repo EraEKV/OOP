@@ -39,6 +39,6 @@ public class Cylinder extends Shape3D {
 	}
 	
 	public String toString() {
-		return "Cylinder with radius: " + this.radius + " and with height: " + this.height;
+		return super.toString() + "Cylinder with radius: " + this.radius + " and with height: " + this.height;
 	}
 }

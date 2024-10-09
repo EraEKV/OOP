@@ -13,8 +13,8 @@ public class Knight extends Piece {
 	public boolean isLegalMove(Position b) {
 		if (!b.isValid()) return false;
 		
-		int deltaX = Math.abs(b.x.ordinal() - a.x.ordinal());
-        int deltaY = Math.abs(b.y - a.y);
+		int deltaX = this.deltaX(b);
+		int deltaY = this.deltaY(b);
         
 		return ((deltaX == 2 && deltaY == 1) || (deltaX == 1 && deltaY == 2));
 	}

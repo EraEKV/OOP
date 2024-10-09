@@ -3,7 +3,7 @@ package task5;
 public abstract class Animal {
 	private String name;
 	private int age;
-	private Person owner;
+	private Person owner = null;
 	private int requireALotOfCare;
 	
 	public Animal() {
@@ -53,20 +53,24 @@ public abstract class Animal {
 		if(this == o) return true;
 		if(!(o instanceof Animal)) return false;
 		Animal other = (Animal) o;
-		return name.equals(other.name) && age == other.age;
+		return this.name.equals(other.name) && 
+				this.age == other.getAge() &&
+				this.owner == other.getOwner() &&
+				this.requireALotOfCare == other.requireALotOfCare;
 	}
 	
 	public int hashCode() {
 		int result = 1;
 		result = result * 31 + (name != null ? name.hashCode() : 0);
 		result = result * 31 + age;
+		result = result * 31 + requireALotOfCare;
 		return result;
 	}
 	
 	public String toString() {
-    	return "Animal{" +
+    	return "Animal[" +
     			"name=" + name +
     			",age=" + age +
-    			"}";
+    			"]";
     }
 }

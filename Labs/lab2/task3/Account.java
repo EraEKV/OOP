@@ -43,6 +43,24 @@ public class Account{
 			}
 		}
 	}
+	
+	
+	public boolean equals(Object o) {
+		if(o == this) return true;
+		if(o == null) return false;
+		if(this.getClass() != o.getClass()) return false;
+		
+		Account other = (Account) o;
+		
+		return accNumber == other.getAccountNumber();
+	}
+	
+	public int hashCode() {
+		int result = 1;
+		result = result * 31 + accNumber;
+		result = result * 31 + (int) balance;
+		return result;
+	}
 
 	@Override
 	public String toString() {
@@ -51,6 +69,7 @@ public class Account{
 				", balance=" + balance +
 				"]";
 	}
+	
 
 	public final void print() {
 		System.out.println(toString());

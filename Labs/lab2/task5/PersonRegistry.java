@@ -1,9 +1,9 @@
 package task5;
 
-import java.util.Vector;
+import java.util.HashSet;
 
 public class PersonRegistry {
-	Vector<Person> people = new Vector<>();
+	HashSet<Person> people = new HashSet<>();
 	
 	public PersonRegistry() {
 		
@@ -17,8 +17,8 @@ public class PersonRegistry {
 		people.remove(p);
 	}
 	
-	public Vector<Person> findPeopleWithPets() {
-		Vector <Person> res = new Vector<>();
+	public HashSet<Person> findPeopleWithPets() {
+		HashSet <Person> res = new HashSet<>();
 		for(Person p : people) {
 			if(p.hasPet()) {
 				res.add(p);
@@ -27,8 +27,8 @@ public class PersonRegistry {
 		return res;
 	}
 	
-	public Vector<Person> findPeopleWithoutPets() {
-		Vector <Person> res = new Vector<>();
+	public HashSet<Person> findPeopleWithoutPets() {
+		HashSet <Person> res = new HashSet<>();
 		for(Person p : people) {
 			if(!p.hasPet()) {
 				res.add(p);

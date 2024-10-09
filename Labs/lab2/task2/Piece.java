@@ -13,6 +13,17 @@ public abstract class Piece {
 	
 	public abstract boolean isLegalMove(Position b);
 	
+	public int deltaX(Position b) {
+		return Math.abs(b.x.ordinal() - a.x.ordinal());
+	}
+	public int deltaY(Position b) {
+		return Math.abs(b.y - a.y);
+	}
+	
+	public void setPosition(Position pos) {
+		this.a = pos;
+	}
+	
 	public Position getPosition() {
 		return a;
 	}
