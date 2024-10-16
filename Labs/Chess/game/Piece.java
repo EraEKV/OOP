@@ -1,6 +1,7 @@
 package game;
 
-import java.util.HashSet;
+import static java.util.Collections.emptySet;
+
 import java.util.Set;
 
 public abstract class Piece {
@@ -16,8 +17,14 @@ public abstract class Piece {
 		this.color = color;
 	}
 	
-	public abstract boolean isValidMove(Position newPosition, Board board);
+	public abstract boolean isLegalMove(Position newPosition, Board board);
 	
+	
+	public Set<Position> getAvailableMoveSquares(Board board) {
+		Set<Position> availableMoveSquares = emptySet();
+		
+		return availableMoveSquares;
+	}
 	
 	public Position getPosition() {
 		return this.position;

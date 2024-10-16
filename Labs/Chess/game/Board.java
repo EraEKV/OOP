@@ -31,7 +31,7 @@ public class Board {
     }
 	
 	public void setupDefaultPositions() {
-//		Pawns
+//		Pawns positions
 		for(Letters x : Letters.values()) {
 			setPiece(new Position(x, 2), new Pawn(Color.WHITE, new Position(x, 2)));
 			setPiece(new Position(x, 7), new Pawn(Color.BLACK, new Position(x, 7)));
