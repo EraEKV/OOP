@@ -1,6 +1,6 @@
-package task5;
+package task6;
 
-public abstract class Animal {
+public abstract class Animal implements Comparable<Animal> {
 	private String name;
 	private int age;
 	private Person owner = null;
@@ -47,6 +47,12 @@ public abstract class Animal {
 
     public void setAge(int age) {
         this.age = age;
+    }
+    
+
+    @Override
+    public int compareTo(Animal o) {
+    	return name.compareTo(o.getName());
     }
 	
 	public boolean equals(Object o) {

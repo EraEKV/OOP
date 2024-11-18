@@ -1,4 +1,4 @@
-package task5;
+package task6;
 
 public class Cat extends Animal {
 		
@@ -19,4 +19,5 @@ public class Cat extends Animal {
 		return super.toString() + 
 				", Cat";
 	}
+	
 }

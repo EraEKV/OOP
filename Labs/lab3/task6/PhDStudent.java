@@ -1,6 +1,6 @@
-package task5;
+package task6;
 
-public class PhDStudent extends Person {
+public class PhDStudent extends Person implements CareProvider {
 	private String proffeciency;
 	private String direction;
 	private int canTakeCare = 2;
@@ -11,12 +11,8 @@ public class PhDStudent extends Person {
         this.proffeciency = proffeciency;
     }
 	
-	public int getOccupation() {
-		return this.canTakeCare;
-	}
-
 	public void assignPet(Animal pet) throws Exception {
-		if(getOccupation() >= pet.getCare()) {
+		if(canProvideCare(pet)) {
 			super.assignPet(pet);
 		} else {
 			throw new Exception("Can't take this type of pet coz busy");
@@ -27,7 +23,7 @@ public class PhDStudent extends Person {
         return proffeciency;
     }
 
-    public void setgetProffeciency(String proffeciency) {
+    public void setProffeciency(String proffeciency) {
         this.proffeciency = proffeciency;
     }
     
@@ -37,6 +33,11 @@ public class PhDStudent extends Person {
 
     public void setDirection(String direction) {
         this.direction = direction;
+    }
+    
+    
+    public boolean canProvideCare(Animal pet) {
+        return this.canTakeCare >= pet.getCare();
     }
 	
     @Override
@@ -55,9 +56,8 @@ public class PhDStudent extends Person {
     	PhDStudent other = (PhDStudent) o;
 		
 		return this.proffeciency.equals(other.proffeciency) && 
-				this.canTakeCare == other.getOccupation() && 
-				this.direction.equals(other.direction) && 
-				this.canTakeCare == other.getOccupation();
+				this.canTakeCare == other.canTakeCare && 
+				this.direction.equals(other.direction);
 	}
 	
 	

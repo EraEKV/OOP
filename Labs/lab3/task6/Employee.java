@@ -1,6 +1,6 @@
-package task5;
+package task6;
 
-public class Employee extends Person {
+public class Employee extends Person implements CareProvider {
 	private String position;
 	private int canTakeCare = 3;
 	
@@ -8,13 +8,9 @@ public class Employee extends Person {
         super(name, age);
         this.position = position;
     }
-	
-	public int getOccupation() {
-		return this.canTakeCare;
-	}
 
 	public void assignPet(Animal pet) throws Exception {
-		if(getOccupation() >= pet.getCare()) {
+		if(canProvideCare(pet)) {
 			super.assignPet(pet);
 		} else {
 			throw new Exception("Can't take this type of pet coz busy");
@@ -43,7 +39,7 @@ public class Employee extends Person {
     	
 		Employee other = (Employee) o;
 		
-		return this.position.equals(other.position) && this.canTakeCare == other.getOccupation();
+		return this.position.equals(other.position) && this.canTakeCare == other.canTakeCare;
 	}
 	
 	
@@ -51,4 +47,9 @@ public class Employee extends Person {
 		return super.toString() + 
 				", position=" + position;
 	}
+
+	@Override
+	public boolean canProvideCare(Animal pet) {
+        return this.canTakeCare >= pet.getCare();
+    }
 }
