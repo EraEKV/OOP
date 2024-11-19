@@ -1,23 +1,20 @@
 package task2;
 
-public class Human implements Moveable, Runnable, Swimable {
+public class Human implements Runnable, Swimable {
 
 	@Override
 	public void swim() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Human can swim and swimming");
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Human run");
 	}
 
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Human can move");		
 	}
 
 }

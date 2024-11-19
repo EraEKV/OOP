@@ -1,17 +1,15 @@
 package task2;
 
-public class Fish implements Swimable, Moveable {
+public class Fish implements Swimable {
 
 	@Override
 	public void move() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Fishs can move");
 	}
 
 	@Override
 	public void swim() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Fish always swim");
 	}
 
 }
