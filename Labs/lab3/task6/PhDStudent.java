@@ -1,6 +1,6 @@
 package task6;
 
-public class PhDStudent extends Person implements CareProvider {
+public class PhDStudent extends Person implements CareProvider, CanTakeHolidays {
 	private String proffeciency;
 	private String direction;
 	private int canTakeCare = 2;
@@ -65,5 +65,11 @@ public class PhDStudent extends Person implements CareProvider {
 		return super.toString() + 
 				", profeciency=" + proffeciency + 
 				", direction=" + direction;
+	}
+
+	@Override
+	public boolean takeHoliday() {
+		System.out.println("Went to mountains");
+		return false;
 	}
 }

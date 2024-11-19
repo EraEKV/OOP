@@ -132,7 +132,7 @@ public class ArrayCollection<E> implements MyCollection<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            private int cursor = 0; // Tracks current position in the iteration.
+            private int cursor = 0;
 
             @Override
             public boolean hasNext() {

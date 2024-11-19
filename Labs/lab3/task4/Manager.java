@@ -45,7 +45,7 @@ public class Manager extends Employee implements Comparable<Employee>, Cloneable
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		Manager cloned = (Manager) super.clone();
-        
+//        deep clonning
         cloned.employees = new Vector<>();
         for (Employee emp : this.employees) {
             cloned.employees.add((Employee) emp.clone());

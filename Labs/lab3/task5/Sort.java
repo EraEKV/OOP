@@ -17,4 +17,45 @@ public class Sort {
             }
         }
     }
+    
+    
+    static <E extends Comparable<E>> void mergeSort(E[] array) {
+        if (array.length <= 1) return;
+        
+        int mid = array.length / 2;
+        
+        @SuppressWarnings("unchecked")
+        E[] left = (E[]) new Comparable[mid];
+        @SuppressWarnings("unchecked")
+		E[] right = (E[]) new Comparable[array.length - mid];
+        
+        System.arraycopy(array, 0, left, 0, mid);
+        System.arraycopy(array, mid, right, 0, array.length - mid);
+        
+        mergeSort(left);
+        mergeSort(right);
+        
+        merge(array, left, right);
+    }
+    
+    private static <E extends Comparable<E>> void merge(E[] array, E[] left, E[] right) {
+        int i = 0, j = 0, k = 0;
+        
+        while (i < left.length && j < right.length) {
+            if (left[i].compareTo(right[j]) <= 0) {
+                array[k++] = left[i++];
+            } else {
+                array[k++] = right[j++];
+            }
+        }
+        
+        while (i < left.length) {
+            array[k++] = left[i++];
+        }
+        
+        while (j < right.length) {
+            array[k++] = right[j++];
+        }
+    }
+    
 }

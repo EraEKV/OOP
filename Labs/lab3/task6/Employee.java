@@ -1,6 +1,6 @@
 package task6;
 
-public class Employee extends Person implements CareProvider {
+public class Employee extends Person implements CareProvider, CanTakeHolidays {
 	private String position;
 	private int canTakeCare = 3;
 	
@@ -52,4 +52,10 @@ public class Employee extends Person implements CareProvider {
 	public boolean canProvideCare(Animal pet) {
         return this.canTakeCare >= pet.getCare();
     }
+
+	@Override
+	public boolean takeHoliday() {
+		System.out.println("Went to Bali");
+		return true;
+	}
 }

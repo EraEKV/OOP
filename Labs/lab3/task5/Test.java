@@ -15,10 +15,10 @@ public class Test {
             new Chocolate("Bounty", 45.5)
         };
         
-        System.out.println("Before bubble sort:");
+        System.out.println("Before merge sort:");
         printArray(chocolates);
-        Sort.bubbleSort(chocolates);
-        System.out.println("After bubble sort:");
+        Sort.mergeSort(chocolates);
+        System.out.println("After merge sort:");
         printArray(chocolates);
 
 
